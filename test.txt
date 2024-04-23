@@ -1,0 +1,2 @@
+Este arquivo serve como teste para a aula sobre deploy em homologação,
+substituindo o arquivo da aula ´cabelo.txt´
