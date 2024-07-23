@@ -1,13 +1,10 @@
 import database from "infra/database";
+import orchestrator from "tests/orchestrator";
 
-async function cleanDatabase() {
-  // Função que limpa todo o banco e depois recria
-  // public é o nome do schema onde ficam todas as tabelas.
-  // Cascade: server para dropar caso haja dependencia (insideout)
+beforeAll(async () => {
+  await orchestrator.waitForAllServices();
   await database.query("drop schema public cascade; create schema public;");
-}
-
-beforeAll(cleanDatabase);
+});
 
 test("GET to /api/v1/migrations should return 200", async () => {
   const response = await fetch("http://localhost:3000/api/v1/migrations");

@@ -1,13 +1,10 @@
 import database from "infra/database";
+import orchestrator from "tests/orchestrator";
 
-async function cleanDatabase() {
-  // Função que limpa todo o banco e depois recria
-  // public é o nome do schema onde ficam todas as tabelas.
-  // Cascade: server para dropar caso haja dependencia (insideout)
+beforeAll(async () => {
+  await orchestrator.waitForAllServices();
   await database.query("drop schema public cascade; create schema public;");
-}
-
-beforeAll(cleanDatabase);
+});
 
 test("POST to /api/v1/migrations should return 200", async () => {
   const response1 = await fetch("http://localhost:3000/api/v1/migrations", {
@@ -30,7 +27,3 @@ test("POST to /api/v1/migrations should return 200", async () => {
   expect(Array.isArray(response2Body)).toBe(true);
   expect(response2Body.length).toBe(0);
 });
-
-// [x] - Como melhorar o teste do POST?
-// [x] - Como me certificar de que o POST esta de fato rodando as migrations?
-// Implementar um teste que eu julgue seguro.
