@@ -17,7 +17,7 @@ describe("POST /api/v1/users", () => {
         },
         body: JSON.stringify({
           username: "lucasfemar",
-          email: "lucasteste@gmail.com",
+          email: "lucasteste@teste.com",
           password: "senha123",
         }),
       });
@@ -27,7 +27,7 @@ describe("POST /api/v1/users", () => {
       expect(responseBody).toEqual({
         id: responseBody.id,
         username: "lucasfemar",
-        email: "lucasteste@gmail.com",
+        email: "lucasteste@teste.com",
         password: "senha123",
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,
