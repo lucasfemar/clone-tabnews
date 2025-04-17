@@ -20,7 +20,7 @@ async function findOneByUsername(username) {
         ;`,
       values: [username],
     });
-    
+
     if (results.rowCount == 0) {
       throw new NotFoundError({
         message: "O username informado não foi encontrado no sistema.",
@@ -101,7 +101,7 @@ async function create(userInputValues) {
 
 const user = {
   create,
-  findOneByUsername
+  findOneByUsername,
 };
 
 export default user;
