@@ -1,4 +1,3 @@
-import * as cookie from "cookie";
 import controler from "infra/controller";
 import authentication from "models/authentication.js";
 import session from "models/session.js";
@@ -18,17 +17,8 @@ async function postHandler(request, response) {
   );
 
   const newSession = await session.create(authenticatedUser.id);
-  const setCookie = cookie.serialize("session_id", newSession.token, {
-    path: "/",
-    maxAge: session.EXPIRATION_IN_MILLISECONDS / 1000,
-    secure: process.env.NODE_ENV === "production",
-    httpOnly: true,
-  });
-  response.setHeader("Set-Cookie", setCookie);
-  /* 
-    Path=/ -> Faz com que o cookie seja colocado no path raiz do site 
-    fazendo com ele fique disponível em todas as rotas. 
-  */
+
+  controler.setSessionCookie(newSession.token, response);
 
   return response.status(201).json(newSession);
 }
