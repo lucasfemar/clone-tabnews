@@ -1,12 +1,12 @@
 import * as cookie from "cookie";
-import session from "models/session.js";
 import {
   InternalServerError,
   MethodNotAllowedError,
-  ValidationError,
   NotFoundError,
   UnauthorizedError,
+  ValidationError,
 } from "infra/errors";
+import session from "models/session.js";
 
 function onErrorHandler(error, request, response) {
   if (
@@ -43,12 +43,23 @@ function setSessionCookie(sessionToken, response) {
   */
 }
 
+function clearSessionCookie(response) {
+  const setCookie = cookie.serialize("session_id", "invalid", {
+    path: "/",
+    maxAge: -1,
+    secure: process.env.NODE_ENV === "production",
+    httpOnly: true,
+  });
+  response.setHeader("Set-Cookie", setCookie);
+}
+
 const controller = {
   errorHandlers: {
     onNoMatch: onNoMachHandler,
     onError: onErrorHandler,
   },
   setSessionCookie,
+  clearSessionCookie,
 };
 
 export default controller;
