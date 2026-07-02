@@ -141,6 +141,7 @@ describe("PATCH /api/v1/activations/[token_id]", () => {
         "create:session",
         "read:session",
         "update:user",
+        "read:status",
       ]);
     });
 
@@ -194,9 +195,9 @@ describe("PATCH /api/v1/activations/[token_id]", () => {
 
       expect(responseBody).toEqual({
         name: "ForbiddenError",
-        message: "Você não possui permissão para executar essa ação.",
+        message: "Você não possui permissão para executar esta ação.",
         action:
-          "Verifique se o seu usuário possui a feature: read:activation_token",
+          'Verifique se o seu usuário possui a feature "read:activation_token"',
         status_code: 403,
       });
     });

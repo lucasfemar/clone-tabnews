@@ -29,9 +29,7 @@ describe("POST /api/v1/users", () => {
       expect(responseBody).toEqual({
         id: responseBody.id,
         username: "lucasfemar",
-        email: "lucasteste@teste.com",
         features: ["read:activation_token"],
-        password: responseBody.password,
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,
       });
@@ -156,8 +154,8 @@ describe("POST /api/v1/users", () => {
 
       expect(user2ResponseBody).toEqual({
         name: "ForbiddenError",
-        message: "Você não possui permissão para executar essa ação.",
-        action: "Verifique se o seu usuário possui a feature: create:user",
+        message: "Você não possui permissão para executar esta ação.",
+        action: 'Verifique se o seu usuário possui a feature "create:user"',
         status_code: 403,
       });
     });

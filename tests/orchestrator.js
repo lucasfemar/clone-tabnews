@@ -64,7 +64,7 @@ async function activateUser(inactiveUser) {
 }
 
 async function addFeaturesToUser(userObject, features) {
-  const updatedUser = user.addFeatures(userObject.id, features);
+  const updatedUser = await user.addFeatures(userObject.id, features);
   return updatedUser;
 }
 
