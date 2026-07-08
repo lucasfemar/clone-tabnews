@@ -55,12 +55,7 @@ describe("GET /api/v1/user", () => {
         id: responseBody.id,
         username: "UserWithValidSession",
         email: createdUser.email,
-        features: [
-          "create:session",
-          "read:session",
-          "update:user",
-          "read:status",
-        ],
+        features: ["create:session", "read:session", "update:user"],
         created_at: createdUser.created_at.toISOString(),
         updated_at: activatedUser.updated_at.toISOString(),
       });
@@ -194,12 +189,7 @@ describe("GET /api/v1/user", () => {
         id: responseBody.id,
         username: "UserWithSessionToExpire",
         email: createdUser.email,
-        features: [
-          "create:session",
-          "read:session",
-          "update:user",
-          "read:status",
-        ],
+        features: ["create:session", "read:session", "update:user"],
         created_at: createdUser.created_at.toISOString(),
         updated_at: activatedUser.updated_at.toISOString(),
       });
