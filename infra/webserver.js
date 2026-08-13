@@ -3,7 +3,7 @@ function getOrigin() {
     return "http://localhost:3000";
   }
 
-  if (process.env.VERCEL_ENV == "preview") {
+  if (process.env.VERCEL_ENV === "preview") {
     return `https://${process.env.VERCEL_URL}`;
   }
   return "https://lucasfemar.com.br";

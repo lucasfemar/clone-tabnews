@@ -22,7 +22,7 @@ async function findOneById(id) {
       values: [id],
     });
 
-    if (results.rowCount == 0) {
+    if (results.rowCount === 0) {
       throw new NotFoundError({
         message: "O id informado não foi encontrado no sistema.",
         action: "Verifique se o id está digitado corretamente.",
@@ -52,7 +52,7 @@ async function findOneByUsername(username) {
       values: [username],
     });
 
-    if (results.rowCount == 0) {
+    if (results.rowCount === 0) {
       throw new NotFoundError({
         message: "O username informado não foi encontrado no sistema.",
         action: "Verifique se o username está digitado corretamente.",
@@ -83,7 +83,7 @@ async function findOneByEmail(email) {
       values: [email],
     });
 
-    if (results.rowCount == 0) {
+    if (results.rowCount === 0) {
       throw new NotFoundError({
         message: "O email informado não foi encontrado no sistema.",
         action: "Verifique se o email está digitado corretamente.",

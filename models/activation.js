@@ -50,7 +50,7 @@ async function findOneValidById(tokenId) {
       values: [tokenId],
     });
 
-    if (results.rowCount == 0) {
+    if (results.rowCount === 0) {
       throw new NotFoundError({
         message:
           "O token de ativação utilizado não foi encontrado no sistema ou expirou.",
