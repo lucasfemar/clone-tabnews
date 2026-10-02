@@ -1,3 +1,4 @@
+import webserver from "infra/webserver.js";
 import orchestrator from "tests/orchestrator.js";
 
 beforeAll(async () => {
@@ -7,7 +8,7 @@ beforeAll(async () => {
 describe("PUT /api/v1/migrations", () => {
   describe("Anonymous user", () => {
     test("Retrieving pending migrations", async () => {
-      const response = await fetch("http://localhost:3000/api/v1/migrations", {
+      const response = await fetch(`${webserver.origin}/api/v1/migrations`, {
         method: "PUT",
       });
       expect(response.status).toBe(405);
