@@ -83,8 +83,8 @@ describe("models/authentication.js", () => {
         id: 1,
         username: "resource",
         features: ["read:user"],
-        created_at: "2026-0101T00:00:00:00Z",
-        updated_at: "2026-0101T00:00:00:00Z",
+        created_at: "2026-01-01T00:00:00:00Z",
+        updated_at: "2026-01-01T00:00:00:00Z",
         email: "resource@reasource.com",
         password: "resource",
       };
@@ -99,8 +99,8 @@ describe("models/authentication.js", () => {
         id: 1,
         username: "resource",
         features: ["read:user"],
-        created_at: "2026-0101T00:00:00:00Z",
-        updated_at: "2026-0101T00:00:00:00Z",
+        created_at: "2026-01-01T00:00:00:00Z",
+        updated_at: "2026-01-01T00:00:00:00Z",
       });
     });
   });
