@@ -1,17 +1,14 @@
-import { createRouter } from "next-connect";
-import controler from "infra/controller.js";
-import user from "models/user.js";
 import controller from "infra/controller.js";
-import authorization from "models/authorization.js";
 import { ForbiddenError } from "infra/errors.js";
+import authorization from "models/authorization.js";
+import user from "models/user.js";
+import { createRouter } from "next-connect";
 
-const router = createRouter();
-
-router.use(controller.injectAnonymousOrUser);
-router.get(getHandler);
-router.patch(controller.canRequest("update:user"), patchHandler);
-
-export default router.handler(controler.errorHandlers);
+export default createRouter()
+  .use(controller.injectAnonymousOrUser)
+  .get(getHandler)
+  .patch(controller.canRequest("update:user"), patchHandler)
+  .handler(controller.errorHandlers);
 
 async function getHandler(request, response) {
   const userTryingToGet = request.context.user;
